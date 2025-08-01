@@ -1,0 +1,160 @@
+/* estilos.css */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #111;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+.fondo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, #222 10%, #000 90%);
+  z-index: -1;
+  overflow: hidden;
+}
+
+.titulo {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 1.8em;
+  padding: 0 10px;
+}
+
+.subtitulo {
+  text-align: center;
+  font-size: 1em;
+  margin-bottom: 30px;
+  color: #ccc;
+  padding: 0 15px;
+}
+
+.contenedor {
+  padding: 20px;
+  text-align: center;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.cartas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 30px;
+  gap: 16px; /* más espacio arriba y abajo */
+}
+
+.carta {
+  width: 140px;
+  height: 170px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.carta-inner {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.carta:hover .carta-inner {
+  transform: rotateY(180deg);
+}
+
+.carta-frente, .carta-atras {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  box-shadow: 0 0 10px rgba(255,255,255,0.2);
+  font-size: 0.95em;
+  text-align: center;
+}
+
+.carta-frente {
+  background: #e91e63;
+  color: #fff;
+}
+
+.carta-atras {
+  background: #fff;
+  color: #333;
+  transform: rotateY(180deg);
+}
+
+.reiniciar {
+  margin-top: 30px;
+  padding: 12px 25px;
+  font-size: 1em;
+  border: none;
+  background: #e91e63;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.reiniciar:hover {
+  background: #c2185b;
+}
+
+/* Partículas suaves tipo corazones/luces */
+.fondo::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, rgba(255, 192, 203, 0.4) 1px, transparent 1px);
+  background-size: 20px 20px;
+  animation: flotar 30s linear infinite;
+  opacity: 0.3;
+}
+
+@keyframes flotar {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 1000px 1000px;
+  }
+}
+
+/* Adaptación extra para pantallas pequeñas */
+@media (max-width: 480px) {
+  .carta {
+    width: 120px;
+    height: 150px;
+    margin-bottom: 20px;
+  }
+
+  .titulo {
+    font-size: 1.5em;
+  }
+
+  .subtitulo {
+    font-size: 0.9em;
+  }
+
+  .reiniciar {
+    font-size: 0.95em;
+    padding: 10px 20px;
+  }
+
+  .cartas {
+    gap: 20px;
+    padding-top: 30px;
+  }
+}
+
